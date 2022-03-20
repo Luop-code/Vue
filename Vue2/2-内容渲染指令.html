@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 希望Vue能控制下面的这个div，帮我们把数据填充到div内部 -->
+    <div id="app">
+        1. v-text会覆盖默认文本内容
+
+        <p v-text="username"></p>
+        <p v-text="gender">性别</p>
+
+        2.{{}}插值表达式，只是内容的占位符，不覆盖原有内容
+        <p>姓名：{{username}}</p>
+        <p>性别：{{gender}}</p>
+
+        <div v-text="info"></div>
+        <div>{{ info }}</div>
+
+        3.v-html可把带标签的字符串渲染成真正的html内容
+        <div v-html="info"></div>
+    </div>
+
+
+
+    <!--1. 导入Vue的库文件，在window全局就有了Vue这个构造函数 -->
+    <script src="./lib/vue.js"></script>
+    <!--2.创建Vue的实例对象  -->
+    <script>
+        // 创建Vue实例
+        const vm = new Vue(
+            {
+                // el属性是固定的写法，表示当前vm实例要控制页面上的哪个区域，接受的值是一个选择器
+                el: '#app',
+
+                // data对象就是要渲染到页面上的数据
+                data: {
+                    username: '罗澎',
+                    gender: '男',
+                    info: '<h4 style="color:red; font-weight:bold;"> hello vue <\/h4>'
+                }
+            }
+        )
+
+    </script>
+</body>
+
+</html>

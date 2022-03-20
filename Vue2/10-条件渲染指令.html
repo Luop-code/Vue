@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 希望Vue能控制下面的这个div，帮我们把数据填充到div内部 -->
+    <div id="app">
+        <!-- v-if的原理:动态创建或移除元素，实现元素的显示和隐藏
+            v-show的原理是:动态为元素添加或移除 display:none样式,来实现元素的显示隐藏
+            要频繁的切换元素显示状态,用v-show性能更好
+            如果刚进入页面，某些元素不需要被显示，且后期也不需要被展示.此时v-if性能更好 -->
+        <p v-if="flag">这是被v-if控制的元素</p>
+        <p v-show="flag">这是被v-show控制的元素</p>
+
+        <br>
+        <div v-if="type==='A'">优秀</div>
+        <div v-else-if="type==='B'">良好</div>
+        <div v-else-if="type==='C'">一般</div>
+        <div v-else>差</div>
+    </div>
+
+
+
+    <!--1. 导入Vue的库文件，在window全局就有了Vue这个构造函数 -->
+    <script src="./lib/vue.js"></script>
+    <!--2.创建Vue的实例对象  -->
+    <script>
+        // 创建Vue实例
+        const vm = new Vue(
+            {
+                // el属性是固定的写法，表示当前vm实例要控制页面上的哪个区域，接受的值是一个选择器
+                el: '#app',
+
+                // data对象就是要渲染到页面上的数据
+                data: {
+                    // 若flag为true，显示被控制的元素，若为false，隐藏被控制的元素
+                    flag: true,
+                    type: 'D',
+
+                },
+                // methods，定义事件的处理函数
+                methods: {
+
+                }
+            }
+        )
+
+    </script>
+</body>
+
+</html>
