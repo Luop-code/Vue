@@ -12,25 +12,7 @@
 <body>
     <!-- 希望Vue能控制下面的这个div，帮我们把数据填充到div内部 -->
     <div id="app">
-        <table class="table table-bordered table-hover table-striped ">
-            <thead>
-                <th>索引</th>
-                <th>ID</th>
-                <th>姓名</th>
-            </thead>
-            <tbody>
-                <!-- 官方建议，用到了v-for指令，一定要绑定一个 :key 属性 ，既提升性能，又防止列表状态混乱-->
-                <!-- 且尽量把id作为key的值 -->
-                <!-- 官方对key的值类型有要求:字符串或数字类型 -->
-                <!-- key的值必须具有唯一性 -->
-                <tr v-for="(item,index) in list" :key="item.id" :title="item.name+index">
-                    <td>{{index}}</td>
-                    <td>{{item.id}}</td>
-                    <td>{{item.name}}</td>
-                </tr>
-
-            </tbody>
-        </table>
+        <p>message的值是： {{ message | capi }}</p>
     </div>
 
 
@@ -47,14 +29,25 @@
 
                 // data对象就是要渲染到页面上的数据
                 data: {
-                    list: [{ id: 1, name: '张三' },
-                    { id: 2, name: '李四' },
-                    { id: 3, name: '王五' }]
-
+                    message: 'hello vue.js'
                 },
                 // methods，定义事件的处理函数
                 methods: {
 
+                },
+                // 过滤器函数必须定义到filters节点下
+                filters: {
+                    // 形参中的val永远都是管道符前面的值
+                    capi(val) {
+                        // charAt()接受索引值，表示从字符串中把对应索引的字符取出来
+
+                        const first = val.charAt(0).toUpperCase();
+
+                        // slice()方法从指定索引往后截取字符串
+                        const other = val.slice(1)
+                        // 过滤器中，一定要有一个返回值
+                        return first + other
+                    }
                 }
             }
         )
