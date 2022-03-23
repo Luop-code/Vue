@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+</head>
+
+<body>
+    <!-- 希望Vue能控制下面的这个div，帮我们把数据填充到div内部 -->
+    <div id="app">
+        <input type="text" v-model="username">
+    </div>
+
+
+
+    <!--1. 导入Vue的库文件，在window全局就有了Vue这个构造函数 -->
+    <script src="./lib/vue.js"></script>
+    <script src="./lib/jquery.min.js"></script>
+    <!--2.创建Vue的实例对象  -->
+    <script>
+        // 创建Vue实例
+        const vm = new Vue(
+            {
+                // el属性是固定的写法，表示当前vm实例要控制页面上的哪个区域，接受的值是一个选择器
+                el: '#app',
+
+                // data对象就是要渲染到页面上的数据
+                data: {
+                    username: 'admin'
+                },
+                // 所有的侦听器，应该被定义到watch节点下
+                watch: {
+                    // 定义对象格式的侦听器
+                    username: {
+                        // 侦听器的处理函数
+                        handler(newVal, oldVal) {
+                            console.log(newVal, oldVal);
+                        },
+                        // 这个属性的默认值是false,控制侦听器是否自动触发一次
+                        immediate: true,
+
+                    }
+                }
+
+            }
+        )
+
+    </script>
+</body>
+
+</html>

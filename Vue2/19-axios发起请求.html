@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btnPost">post</button>
+    <button id="btnGet">get</button>
+    <script src="./lib/axios.js"></script>
+    <script>
+        document.querySelector('#btnPost').addEventListener('click', async function () {
+            // 如果调用某个方法，当返回值是promise实例，则前面可以添加await
+            // await 只能用在被async"修饰"的方法中
+            const { data } = await axios({
+                method: 'POST',
+                url: 'http://www.liulongbin.top:3006/api/post',
+                data: {
+                    name: 'luo',
+                    age: 21
+                }
+            })
+            console.log(data);
+        })
+        document.querySelector('#btnGet').addEventListener('click', async function () {
+            // 使用结构赋值，将axios封装的大对象中的data属性结构出来
+            // 结构赋值的时候，用 : 进行重命名
+
+            const { data: res } = await axios({
+                method: 'GET',
+                url: 'http://www.liulongbin.top:3006/api/getbooks',
+
+            })
+            console.log(res.data);
+        })
+
+
+
+    </script>
+</body>
+
+</html>

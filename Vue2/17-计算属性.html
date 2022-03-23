@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 希望Vue能控制下面的这个div，帮我们把数据填充到div内部 -->
+    <div id="app">
+        <div>
+            <span>R:</span>
+            <input type="text" v-model="r">
+        </div>
+        <div>
+            <span>G:</span>
+            <input type="text" v-model="g">
+        </div>
+        <div>
+            <span>B:</span>
+            <input type="text" v-model="b">
+        </div>
+        <br>
+
+        <!-- 呈现颜色的div盒子 -->
+        <!-- :style代表动态绑定的一个样式对象 -->
+        <div class="box" :style="{ backgroundColor:rgb}">
+            {{ rgb }}
+        </div>
+        <button @click="show">按钮</button>
+    </div>
+
+
+
+    <!--1. 导入Vue的库文件，在window全局就有了Vue这个构造函数 -->
+    <script src="./lib/vue.js"></script>
+    <script src="./lib/jquery.min.js"></script>
+    <!--2.创建Vue的实例对象  -->
+    <script>
+        // 创建Vue实例
+        const vm = new Vue(
+            {
+                // el属性是固定的写法，表示当前vm实例要控制页面上的哪个区域，接受的值是一个选择器
+                el: '#app',
+
+                // data对象就是要渲染到页面上的数据
+                data: {
+                    r: 0, g: 0, b: 0
+                },
+                methods: {
+                    show() {
+                        console.log(this.rgb);
+                    }
+                },
+
+                // 所有计算属性都要定义到computed节点下
+                // 计算属性定义时要定义成方法格式,但用法是作为属性来用
+                // 实现了代码的复用，只要计算属性中依赖的数据源变化了，则计算属性会自动重新求值
+                computed: {
+                    // rgb作为计算属性，最终返回生成好的rgb(x,x,x)字符串
+
+                    rgb() {
+                        return `rgb(${this.r},${this.g},${this.b})`
+                    }
+                }
+            }
+        )
+        console.log(vm);
+    </script>
+</body>
+
+</html>
