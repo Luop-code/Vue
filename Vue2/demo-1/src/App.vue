@@ -1,28 +1,40 @@
+
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <h1>App根组件</h1>
+   <br>
+   <div class="box">
+     <!-- 渲染Left组件和Right组件 -->
+     <!-- 以标签形式，使用注册组件 -->
+     <Test></Test>
+     <Left></Left>
+     <Right></Right>
+    
+   </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// 导图需要使用的.vue组件
+import Left from '@/components/Left.vue'
+import Right from '@/components/Right.vue'
+import Count from  '@/components/Count.vue'
+import Test from '@/components/Test.vue'
 export default {
-  name: 'App',
+  
+  // 注册组件
   components: {
-    HelloWorld
+    Left,
+    Right,
+    Count,
+    Test
   }
 }
 </script>
 
 <style lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+padding: 1px 20px 20px;
+background-color: #efefef;
 }
 </style>
