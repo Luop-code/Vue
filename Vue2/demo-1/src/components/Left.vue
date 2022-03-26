@@ -26,6 +26,7 @@ export default {
    color: red;
  }
 
+// 相当于把自己变成了后代选择器，给自身添加了data-v-xxx属性，再选择后代元素
  /deep/ h5 {
     color:pink;
   }

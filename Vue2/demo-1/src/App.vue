@@ -2,11 +2,15 @@
 <template>
   <div id="app">
    <h1>App根组件</h1>
+
    <br>
    <div class="box">
      <!-- 渲染Left组件和Right组件 -->
      <!-- 以标签形式，使用注册组件 -->
-     <Test></Test>
+      <button @click="flag=!flag">Toggle flag</button>
+     <Test info="你好" v-if="flag"></Test>
+   
+     <br>
      <Left></Left>
      <Right></Right>
     
@@ -21,7 +25,11 @@ import Right from '@/components/Right.vue'
 import Count from  '@/components/Count.vue'
 import Test from '@/components/Test.vue'
 export default {
-  
+  data(){
+    return {
+      flag:true
+    }
+  },
   // 注册组件
   components: {
     Left,
