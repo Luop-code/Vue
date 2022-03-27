@@ -77,7 +77,7 @@ export default {
       // console.log(dom.innerHTML);
   },
 
-// 6-updated(),当数据变化之后，为了能够操作到最新的DOM，必须把代码写到这个生命周期
+//  6-updated(),当数据变化之后，为了能够操作到最新的DOM，必须把代码写到这个生命周期
   updated(){
       // console.log('update');
       // console.log(this.message);
