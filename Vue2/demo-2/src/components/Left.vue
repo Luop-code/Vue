@@ -2,15 +2,15 @@
   <div class="left-container">
       <h3>Left组件</h3>
       <p>msg的值是{{msg}}</p>
-      <p>user的值是{{ userinfo }}</p>
-      <br>
-  
+      <p>user的值是{{ user }}</p>
+      <button @click="msg = 'abc'">修改msg</button>
+      <button @click="user.name = 'zs' ">修改user</button>
   </div>
 </template>
 
 <script>
 export default {
-  props:['message','user']
+  props:['msg','user']
 }
 </script>
 
