@@ -5,12 +5,28 @@
       <p>user的值是{{ user }}</p>
       <button @click="msg = 'abc'">修改msg</button>
       <button @click="user.name = 'zs' ">修改user</button>
+      <br>
+      <button @click="send">发送给right</button>
   </div>
 </template>
 
 <script>
+// 导入 eventBus.js模块
+import bus from './eventBus.js'
 export default {
-  props:['msg','user']
+  props:['msg','user'],
+  data(){
+    return {
+      str: `hello world`
+    }
+  },
+  methods:{
+   
+    send(){
+       // 通过eventBus发送数据
+      bus.$emit('share',this.str)
+    }
+  }
 }
 </script>
 
