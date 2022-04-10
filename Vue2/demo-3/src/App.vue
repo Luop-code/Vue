@@ -5,6 +5,9 @@
     <button @click="onReset">重置Left组件的count值</button>
    <br>
 
+    <input type="text" v-if="inputVisible" @blur="showButton">
+    <button v-else @click="showInput">展示输入框</button>
+
    <div class="box">
      <Left ref="comLeft"></Left>
    </div>
@@ -15,7 +18,18 @@
 import Left from '@/components/Left.vue'
 
 export default {
+  data(){
+    return {
+      inputVisible: false
+    }
+  },
   methods:{
+    showButton(){
+      this.inputVisible = false
+    },
+    showInput(){
+      this.inputVisible = true
+    },
     showThis(){
       // console.log(this.$refs.myh1);
       this.$refs.myh1.style.color = 'red'
