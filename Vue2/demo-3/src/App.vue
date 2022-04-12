@@ -5,7 +5,7 @@
     <button @click="onReset">重置Left组件的count值</button>
    <br>
 
-    <input type="text" v-if="inputVisible" @blur="showButton">
+    <input type="text" v-if="inputVisible" @blur="showButton" ref="iptRef">
     <button v-else @click="showInput">展示输入框</button>
 
    <div class="box">
@@ -28,7 +28,15 @@ export default {
       this.inputVisible = false
     },
     showInput(){
+      // 展示文本框
       this.inputVisible = true
+      // 让文本框自动获得焦点
+      // this.$refs.iptRef.focus()   此时页面未更新，iptRef是undefined
+
+      // $nextTick() 会把回调函数推迟到下一个DOM更新周期后执行，即DOM更新后，再执行里面的函数
+      this.$nextTick(()=>{
+        this.$refs.iptRef.focus()
+      })
     },
     showThis(){
       // console.log(this.$refs.myh1);
